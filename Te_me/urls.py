@@ -38,6 +38,8 @@ urlpatterns = [
     # About - Page
     url(r'about/', TemplateView.as_view(template_name='layouts/general/about.html'), name='about'),
 
+	# Blog
+    url('blog/', include('blog.urls'), name='blog'),
 
     # 网站基本功能依赖
     # 配置静态图片上传的加载处理
