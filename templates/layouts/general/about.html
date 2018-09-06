@@ -1,0 +1,68 @@
+{% extends 'layouts\general\base.html' %}
+
+{# 静态文件加载 #}
+{% load staticfiles %}
+{# 国际化 #}
+{% load i18n %}
+
+{% block title %}ABOUT{% endblock %}
+
+{% block style %}
+    <style>
+        /* 定义： 字体样式  边框样式 */
+
+        /* 设置文章标题边框 */
+        .article-title {
+            border: 1px solid;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container my-5">
+          <div class="rounded article-title">
+              <div class="row">
+                  <h3 class="ml-5 mr-3 mt-3 col-md-8">About</h3>
+                  <p class="text-muted col-md-2 mt-2">{{ total_views }}<small id="article_views"></small> views</p>
+              </div>
+              <hr class="ml-4 mr-4">
+              <h6 class="text-right mr-5 text-muted row">
+                  <a class="mr-5 col-md-2">Noah</a>
+                  <a class="mr-5 col-md-3">2018年9月4日18:56:38</a>
+                  <a class="mr-5 col-md-3">北京-出租屋</a>
+              </h6>
+              <hr class="ml-5 mr-5">
+              <p class="ml-5 mr-5 my-5">
+                  <strong>关于：</strong><br>
+                  这是一个用<strong>Python</strong>作为后端语言写成的Blog。<br>
+                  其实还有很多自己想写的东西，比如在<i> 创意矩阵 </i>中提到的这些东西，有的正在做，有的还在想。<br>
+                  当我第一次了解到<i> 开源 </i>这个概念的时候，我觉得和自己的三观很合的来，所以一直都很想参与到开源项目里。<br>
+                  <!-- 包括参与到腾讯的云+社区社区做志愿翻译，参与到Cake在Github上的DOC汉化 -->
+                  当然自己还是有很多的不足，和各位前辈们相比有很大的差距，所以也一直在不断学习新的东西，比如Redis、Vue.js等。
+
+                  <br>
+                  <br>
+                  <strong>感谢：</strong><br>
+                  各个像Bootstrap、jQuery、Font Awesome、Vue等这样优秀的前端开源库<br>
+                  各个像Django、Flask等这样优秀的Python Web Framework开源库<br>
+                  感谢Python，不仅是优雅的编程语言，更是一种编程信仰<br>
+                  ...<br>
+                  <br>
+                  感谢在这些优秀开源软件背后的付出的开发人员<br>
+                  没有他们，就没有今天如此多的优秀的作品<br>
+                  <br>
+                  感谢时间让我长大，让我成长<br>
+                  <!-- 那些悲伤的、幸福的时刻都让我铭记和感恩 -->
+
+              </p>
+              <p class="ml-5 mr-5 my-5"></p>
+
+          </div>
+      </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+</script>
+{% endblock %}

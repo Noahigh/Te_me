@@ -1,0 +1,63 @@
+{% extends 'layouts\general\base.html' %}
+
+{# 静态文件加载 #}
+{% load staticfiles %}
+{# 国际化 #}
+{% load i18n %}
+
+{% block style %}
+    <style>
+        /* 定义： 字体样式  边框样式 */
+
+        /* 设置文章标题边框 */
+        .article-title {
+            border: 1px solid;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container my-5">
+          <div class="rounded article-title">
+              <div class="row">
+                  <h3 id="article_title" class="ml-5 mr-3 mt-3 col-md-8"></h3>
+                  <p class="text-muted col-md-2 mt-2">{{ total_views }}<small id="article_views"></small> views</p>
+              </div>
+              <hr class="ml-4 mr-4">
+              <h6 class="text-right mr-5 text-muted row">
+                  <a id="article_author" class="mr-5 col-md-2"></a>
+                  <a id="article_publish" class="mr-5 col-md-2"></a>
+                  <a id="article_tags" class="mr-5 col-md-3">TAGS</a>
+              </h6>
+              <hr class="ml-5 mr-5">
+              <p id="article_content" class="ml-5 mr-5 my-5"></p>
+          </div>
+      </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "{% url 'blog:loadarticledata' %}",
+        data: { article_id: {{ article.id }} },
+        async: true,
+        dataType: "json",
+        success: function(data){
+            $("title").html(data.title);
+            $("#article_title").html(data.title);
+            $("#article_author").html(data.author);
+            $("#article_publish").html(data.publish);
+            $("#article_tags").html(data.tags);
+            $("#article_content").html(data.content);
+            $("#article_views").html(data.views);
+        },
+        error: function(error){
+            console.log(error);
+            alert("ERROR");
+        },
+    }); // .ajax
+}); // .ready
+</script>
+{% endblock %}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+{# 静态文件加载 #}
+{% load staticfiles %}
+{# 国际化 #}
+{% load i18n %}
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="{% static 'fontawesome-free-5.3.1-web/css/all.css' %}">
+        <!--<link rel="stylesheet" href="{% static 'fontawesome-free-5.3.1-web/css/fontawesome.css' %}">-->
+
+        <!-- The other CSS Libs -->
+        {% block css %}{% endblock %}
+
+        <!-- The title -->
+        <title>{% block title %}Hello, world!{% endblock %}</title>
+    </head>
+
+    <!-- Customer style -->
+    {% block style %}{% endblock %}
+
+    <body>
+        <!-- Top MENU -->
+        <nav class="navbar navbar-expand-lg navbar-light rounded shadow-sm" style="background-color:#dee2e6;">
+            <a class="navbar-brand" href="#">Te_me</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggle-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html"><i class="fa fa-home"> Home </i><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-pen"> Contents </i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}"><i class="fa fa-book"> About </i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fab fa-mailchimp"> 创意矩阵 </i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">-Project Combat-</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">-DASHBOARD-</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'laoqi:index' %}">Laoqi</a>
+                    </li>
+                </ul>
+                <!-- Search -->
+                <form class="form-inline my-2 my-lg-0">
+                    <input id="search_text" class="form-control mr-sm-2" type="search" placeholder="Search something here" aria-label="Search">
+                    <button id="search_btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <!-- UserInfo -->
+                <ul class="navbar-nav mr-right ml-2">
+                    <li class="nav-item my-1">
+                        <a class="nav-link" href="#"><i class="fa fa-bell">②</i></a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link" href="#">
+                            <img src="{% static '/default.jpg' %}" class="img-thumbnail rounded-circle" style="max-width:32px; max-height:32px">
+                            Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- AD -->
+        <div class="my-5 ml-5 mr-5">
+            <div class="rounded border shadow">
+                <a class="">
+                    <img src="{% static '/default.jpg' %}" style="height: 5rem;">
+                    <i class="fas fa-ad"> This is Ad area. </i>
+                </a>
+            </div>
+        </div>
+        <!-- Contents -->
+        {% block content %}{% endblock %}
+        <!--  -->
+        <div style="background-color:#436160;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 mt-5 mb-5">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-camera-retro"> 媒体矩阵 </i></h5>
+                                <p class="card-text">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="//weibo.com/u/3186635252"><i class="fab fa-weibo"> 微博：Noah来举个栗子</i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fab fa-weixin"> 微信公众号：Noah和他的开发者朋友们</i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fas fa-envelope"> 邮箱：noahspace@outlook.com</i></a>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mt-5 mb-5">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fab fa-mailchimp"> 创意矩阵 </i></h5>
+                                <p class="card-text">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="#"><i>BLOG</i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i>项目实战网</i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i>开源后台</i></a>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="border navbar sticky-bottom rounded" style="background-color:#dee2e6;">
+            <h6>感谢：Bootstrap | jQuery | Font Awesome | Python | Django</h6>
+            <h5>2018 &copy; 出租屋<i class="fa fa-home"></i> </h5>
+        </footer>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                // Global search process function
+                function search_click(){
+                    var keyword = $("#search_text").val(),
+                    request_url = "";
+
+                    if(keyword == ''){
+                        return
+                    }
+
+                    // request_url = "{% url 'search' %}?keyword="+keyword;
+                    request_url = "{% url 'laoqi:index' %}?keyword="+keyword;
+
+                    $(window).attr('location', request_url);
+                }
+                // Global search button-click process
+                $("#search_btn").click(function(){
+                    search_click();
+
+                    return false;
+                });
+            });
+        </script>
+        {% block javascript %}{% endblock %}
+    </body>
+</html>

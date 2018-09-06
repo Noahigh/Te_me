@@ -1,0 +1,111 @@
+{% extends 'layouts\general\base.html' %}
+
+{# 静态文件加载 #}
+{% load staticfiles %}
+{# 国际化 #}
+{% load i18n %}
+
+{% block title %}Te_me - 博客{% endblock %}
+
+{% block style %}
+    <style>
+        /* 定义： 字体样式  边框样式 */
+
+        /* 设置文章标题边框 */
+        .article-title {
+            border: 1px solid;
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+{% if blogs %}
+    {% for blog in blogs %}
+    <div class="container my-5">
+        <div class="rounded article-title">
+            <a href="{% url 'blog:detail' blog.id %}" style="color:black;">
+                <h3 class="ml-3 mr-3 my-1">{{ blog.title }}</h3>
+                <p class="ml-3 mr-3">{{ blog.content|slice:"20" }}...</p>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="container my-5">
+        <div class="rounded article-title">
+            <a style="color:black;">
+                <h3 class="ml-3 mr-3 my-1">亲爱的读者哟~</h3>
+                <p class="ml-3 mr-3">没有符合查询条件的文章喲~</p>
+            </a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+    // 文章列表-边框&阴影颜色随机
+    // 生成随机颜色
+    function randomColor(){
+        // 16进制-字符串形式返回-适用于rgb()
+        // var r = Math.floor(Math.random()*256).toString(16);
+        // var g = Math.floor(Math.random()*256).toString(16);
+        // var b = Math.floor(Math.random()*256).toString(16);
+
+        // return "#" + r + g +b;
+
+        // 10进制-数组形式返回-适用于rgba()
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+
+        // 数组赋值形式-1
+        var color = new Array(r, g, b);
+
+        // 数组赋值形式-2
+        var color = new Array(3);
+        color[0] = r;
+        color[1] = g;
+        color[2] = b;
+
+        return color;
+    }
+
+    // 渲染边框以及初始阴影
+    $(".article-title").each(function(){
+        var color = randomColor();
+        var total_border = '1px solid rgba(' + color + ', 1)';
+        var total_shadow = '0 .5rem 1rem rgba(' + color + ', .15)';
+        var total_shadow_lg = '0 1rem 3rem rgba(' + color + ', .20)';
+        // 渲染边框以及初始阴影
+        $(this).css({
+            "border": total_border,
+            "box-shadow": total_shadow,
+        });
+
+        // 文章列表-阴影大小变换效果
+        // 鼠标移入效果
+        $(this).mouseenter(function(){
+        // $(this).removeClass("shadow").addClass("shadow-lg");
+            $(this).css({
+                "box-shadow": total_shadow_lg,
+            });
+        });
+        // 鼠标移出效果
+        $(this).mouseleave(function(){
+        // $(this).removeClass("shadow-lg").addClass("shadow");
+            $(this).css({
+                "box-shadow": total_shadow,
+            });
+        });
+
+
+        //鼠标点击效果
+        $(this).click(function(){
+            location.href = "details.html?color=" + encodeURI(color);
+        });
+    }); // .article-title
+}); // .ready
+</script>
+{% endblock %}
