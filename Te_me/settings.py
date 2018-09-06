@@ -116,7 +116,7 @@ DATABASES = {
         'NAME': 'te_me',
         # 指明用户名和密码
         'USER': 'root',
-        'PASSWORD': 'aslxvr95',
+        'PASSWORD': 'root',
         # 指明主机位置
         'HOST': '127.0.0.1',
         # 指明连接端口

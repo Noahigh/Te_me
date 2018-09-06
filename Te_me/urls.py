@@ -35,14 +35,9 @@ urlpatterns = [
     # 首页、欢迎页面，俗称index页面
 
     # All kinds of APP's urls
-    # laoqi - index
-    url(r'laoqi/', include('laoqi.urls'), name='laoqi'),
-
     # About - Page
     url(r'about/', TemplateView.as_view(template_name='layouts/general/about.html'), name='about'),
 
-    # vue - test
-    url(r'goods/', TemplateView.as_view(template_name='layouts/goods.html'), name='goods'),
 
     # 网站基本功能依赖
     # 配置静态图片上传的加载处理
@@ -51,8 +46,6 @@ urlpatterns = [
     # 配置 静态文件 访问处理函数 - 用于生产环境
     # url(r'static/(?P<path>.*)', serve, {"document_root": STATIC_ROOT}),
 
-    # API - Global Search
-    url(r'api/search/$', GlobalSearchView.as_view(), name='search'),
 ]
 
 # 配置全局 404 ERROR 错误页面
